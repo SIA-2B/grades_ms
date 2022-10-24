@@ -1,5 +1,7 @@
 package com.devops.tutorial.model;
 
+import java.sql.Time;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -11,153 +13,76 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "schedules")
+@Table(name = "schedule")
 @EntityListeners(AuditingEntityListener.class)
 public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long scheduleId;
 
-    @Column(name = "schedule_monday", nullable = false)
-    private String scheduleMonday;
+    @Column(name = "student_id", nullable = false)
+    private Integer studentId;
 
-    @Column(name = "schedule_tuesday", nullable = false)
-    private String scheduleTuesday;
+    @Column(name = "time", nullable = false)
+    private Time time;
 
-    @Column(name = "schedule_wednesday", nullable = false)
-    private String scheduleWednesday;
+    @Column(name = "day", nullable = false)
+    private String day;
 
-    @Column(name = "schedule_thursday", nullable = false)
-    private String scheduleThursday;
+    @Column(name = "course_id", nullable = false)
+    private Integer courseId;
 
-    @Column(name = "schedule_friday", nullable = false)
-    private String scheduleFriday;
-
-    @Column(name = "schedule_saturday", nullable = false)
-    private String scheduleSaturday;
-
-    @Column(name = "schedule_classroom_monday", nullable = false)
-    private String scheduleClassroomMonday;
-
-    @Column(name = "schedule_classroom_tuesday", nullable = false)
-    private String scheduleClassroomTuesday;
-
-    @Column(name = "schedule_classroom_wednesday", nullable = false)
-    private String scheduleClassroomWednesday;
-
-    @Column(name = "schedule_classroom_thursday", nullable = false)
-    private String scheduleClassroomThursday;
-
-    @Column(name = "schedule_classroom_friday", nullable = false)
-    private String scheduleClassroomFriday;
-
-    @Column(name = "schedule_classroom_saturday", nullable = false)
-    private String scheduleClassroomSaturday;
+    @Column(name = "teacher_id", nullable = false)
+    private Integer teacherId;
 
  
-    public long getId() {
-        return id;
+    public long getScheduleId() {
+        return scheduleId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setScheduleId(long scheduleId) {
+        this.scheduleId = scheduleId;
     }
 
-    public String getScheduleMonday() {
-        return scheduleMonday;
+    public Integer getStudentId() {
+        return studentId;
     }
 
-    public void setScheduleMonday(String scheduleMonday) {
-        this.scheduleMonday = scheduleMonday;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
-    public String getScheduleTuesday() {
-        return scheduleTuesday;
+    public Time getTime() {
+        return time;
     }
 
-    public void setScheduleTuesday(String scheduleTuesday) {
-        this.scheduleTuesday = scheduleTuesday;
+    public void setTime(Time time) {
+        this.time = time;
     }
 
-    public String getScheduleWednesday() {
-        return scheduleWednesday;
+    public String getDay() {
+        return day;
     }
 
-    public void setScheduleWednesday(String scheduleWednesday) {
-        this.scheduleWednesday = scheduleWednesday;
+    public void setDay(String day) {
+        this.day = day;
     }
 
-    public String getScheduleThursday() {
-        return scheduleThursday;
+    public Integer getCourseId() {
+        return courseId;
     }
 
-    public void setScheduleThursday(String scheduleThursday) {
-        this.scheduleThursday = scheduleThursday;
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
     }
 
-    public String getScheduleFriday() {
-        return scheduleFriday;
+    public Integer getTeacherId() {
+        return teacherId;
     }
 
-    public void setScheduleFriday(String scheduleFriday) {
-        this.scheduleFriday = scheduleFriday;
-    }
-
-    public String getScheduleSaturday() {
-        return scheduleSaturday;
-    }
-
-    public void setScheduleSaturday(String scheduleSaturday) {
-        this.scheduleSaturday = scheduleSaturday;
-    }
-
-    public String getScheduleClassroomMonday() {
-        return scheduleClassroomMonday;
-    }
-
-    public void setScheduleClassroomMonday(String scheduleClassroomMonday) {
-        this.scheduleClassroomMonday = scheduleClassroomMonday;
-    }
-
-    public String getScheduleClassroomTuesday() {
-        return scheduleClassroomTuesday;
-    }
-
-    public void setScheduleClassroomTuesday(String scheduleClassroomTuesday) {
-        this.scheduleClassroomTuesday = scheduleClassroomTuesday;
-    }
-
-    public String getScheduleClassroomWednesday() {
-        return scheduleClassroomWednesday;
-    }
-
-    public void setScheduleClassroomWednesday(String scheduleClassroomWednesday) {
-        this.scheduleClassroomWednesday = scheduleClassroomWednesday;
-    }
-
-    public String getScheduleClassroomThursday() {
-        return scheduleClassroomThursday;
-    }
-
-    public void setScheduleClassroomThursday(String scheduleClassroomThursday) {
-        this.scheduleClassroomThursday = scheduleClassroomThursday;
-    }
-
-    public String getScheduleClassroomFriday() {
-        return scheduleClassroomFriday;
-    }
-
-    public void setScheduleClassroomFriday(String scheduleClassroomFriday) {
-        this.scheduleClassroomFriday = scheduleClassroomFriday;
-    }
-
-    public String getScheduleClassroomSaturday() {
-        return scheduleClassroomSaturday;
-    }
-
-    public void setScheduleClassroomSaturday(String scheduleClassroomSaturday) {
-        this.scheduleClassroomSaturday = scheduleClassroomSaturday;
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
     }
 
 }

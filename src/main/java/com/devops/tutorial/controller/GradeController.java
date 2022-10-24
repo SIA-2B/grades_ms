@@ -27,25 +27,35 @@ public class GradeController {
   @Autowired
   private IGradeService gradeService;
 
-  @GetMapping("/grades")
+  @GetMapping("/grade")
   public List<Grade> getAllGrades() {
     return gradeService.getAllGrades();
   }
 
-  @GetMapping("/grades/{id}")
+  @GetMapping("/grade/{id}")
   public ResponseEntity<Grade> getGradesById(@PathVariable(value = "id") Long gradeId)
       throws ResourceNotFoundException {
     Grade grade = gradeService.getGradeById(gradeId);
     return ResponseEntity.ok().body(grade);
   }
 
-  @PostMapping("/grades")
+  @GetMapping("/grade/byCourseName/{courseName}")
+  public List<Grade> getAllGradesByCourseName(@PathVariable(value = "courseName") String courseName){
+    return gradeService.getAllGradesByCourseName(courseName);
+  }
+
+  @GetMapping("/grade/byStudentId/{studentId}")
+  public List<Grade> getAllGradesByStudentId(@PathVariable(value = "studentId") Integer studentId){
+    return gradeService.getAllGradesByStudentId(studentId);
+  }
+
+  @PostMapping("/grade")
   public Grade createGrade(@Valid @RequestBody Grade grade) {
 	  gradeService.saveGrade(grade);
     return grade;
   }
 
-  @PutMapping("/grades/{id}")
+  @PutMapping("/grade/{id}")
   public ResponseEntity<Grade> updateGrade(
       @PathVariable(value = "id") Long gradeId, @Valid @RequestBody Grade grade)
       throws ResourceNotFoundException {
@@ -53,7 +63,7 @@ public class GradeController {
     return ResponseEntity.ok(updatedGrade);
   }
 
-  @DeleteMapping("/grades/{id}")
+  @DeleteMapping("/grade/{id}")
   public Map<String, Boolean> deleteGrade(@PathVariable(value = "id") Long gradeId) throws Exception {
     return gradeService.deleteGrade(gradeId);
   }

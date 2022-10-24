@@ -11,6 +11,10 @@ List<Grade> getAllGrades();
 
 Grade getGradeById(Long gradeId);
 
+List<Grade> getAllGradesByCourseName(String courseName);
+
+List<Grade> getAllGradesByStudentId(Integer studentId);
+
 Grade saveGrade(Grade grade);
 
 Grade updateGrade(Long gradeId, Grade grade);

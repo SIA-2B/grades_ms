@@ -11,13 +11,13 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "grades")
+@Table(name = "grade")
 @EntityListeners(AuditingEntityListener.class)
 public class Grade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long gradeId;
 
     @Column(name = "student_id", nullable = false)
     private Integer studentId;
@@ -25,8 +25,8 @@ public class Grade {
     @Column(name = "course_id", nullable = false)
     private Integer courseId;
 
-    @Column(name = "teacher_id", nullable = false)
-    private Integer teacherId;
+    @Column(name = "course_name", nullable = false)
+    private String courseName;
 
     @Column(name = "grade_final", nullable = false)
     private Double gradeFinal;
@@ -35,12 +35,12 @@ public class Grade {
     private String gradePeriod;
 
  
-    public long getId() {
-        return id;
+    public long getGradeId() {
+        return gradeId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setGradeId(long gradeId) {
+        this.gradeId = gradeId;
     }
 
     public Integer getStudentId() {
@@ -59,12 +59,12 @@ public class Grade {
         this.courseId = courseId;
     }
 
-    public Integer getTeacherId() {
-        return teacherId;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public Double getGradeFinal() {
@@ -86,10 +86,10 @@ public class Grade {
     @Override
     public String toString() {
         return "Grade{" +
-                "id=" + id +
+                "id=" + gradeId +
                 ", studentId='" + studentId + '\'' +
                 ", courseId='" + courseId + '\'' +
-                ", teacherId='" + teacherId + '\'' +
+                ", courseName='" + courseName + '\'' +
                 ", gradeFinal='" + gradeFinal + '\'' +
                 ", gradePeriod='" + gradePeriod + '\'' +
                 '}';

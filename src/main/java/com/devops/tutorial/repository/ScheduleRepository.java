@@ -5,5 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.devops.tutorial.model.Schedule;
 
+import java.util.List;
+
 @Repository
-public interface ScheduleRepository extends JpaRepository<Schedule, Long> {}
+public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
+    List<Schedule> findByStudentId(Integer studentId);
+}

@@ -39,6 +39,11 @@ public class ScheduleService implements IScheduleService{
 		}
 		    return grade;
 	}
+
+	@Override
+	public List<Schedule> getAllSchedulesByStudentId(Integer studentId) {
+		return scheduleRepository.findByStudentId(studentId);
+	}
 	
 	@Override
 	public Schedule saveSchedule(Schedule grade) {
@@ -51,18 +56,11 @@ public class ScheduleService implements IScheduleService{
 		try {
 			Schedule schedule = new Schedule();
 			schedule = scheduleRepository.findById(scheduleId).orElseThrow(() -> new ResourceNotFoundException("Schedule not found on :: " + scheduleId));
-			schedule.setScheduleMonday(scheduleDet.getScheduleMonday());
-			schedule.setScheduleTuesday(scheduleDet.getScheduleTuesday());
-            schedule.setScheduleWednesday(scheduleDet.getScheduleWednesday());
-            schedule.setScheduleThursday(scheduleDet.getScheduleThursday());
-            schedule.setScheduleFriday(scheduleDet.getScheduleFriday());
-            schedule.setScheduleSaturday(scheduleDet.getScheduleSaturday());
-            schedule.setScheduleClassroomMonday(scheduleDet.getScheduleClassroomMonday());
-            schedule.setScheduleClassroomTuesday(scheduleDet.getScheduleClassroomTuesday());
-            schedule.setScheduleClassroomWednesday(scheduleDet.getScheduleClassroomWednesday());
-            schedule.setScheduleClassroomThursday(scheduleDet.getScheduleClassroomThursday());
-            schedule.setScheduleClassroomFriday(scheduleDet.getScheduleClassroomFriday());
-            schedule.setScheduleClassroomSaturday(scheduleDet.getScheduleClassroomSaturday());
+			schedule.setStudentId(scheduleDet.getStudentId());
+			schedule.setTime(scheduleDet.getTime());
+            schedule.setDay(scheduleDet.getDay());
+            schedule.setCourseId(scheduleDet.getCourseId());
+            schedule.setTeacherId(scheduleDet.getTeacherId());
 			updatedSchedule = scheduleRepository.save(schedule);
 		} catch (ResourceNotFoundException e) {
 			LOGGER.error("Error al actualizar el horario ", e);

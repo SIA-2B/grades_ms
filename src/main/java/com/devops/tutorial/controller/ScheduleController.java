@@ -28,7 +28,7 @@ public class ScheduleController {
   @Autowired
   private IScheduleService scheduleService;
 
-  @GetMapping("/schedules")
+  @GetMapping("/schedule")
   public List<Schedule> getAllSchedules() {
     return scheduleService.getAllSchedules();
   }
@@ -40,13 +40,18 @@ public class ScheduleController {
     return ResponseEntity.ok().body(schedule);
   }
 
-  @PostMapping("/schedules")
+  @GetMapping("/schedule/byStudentId/{studentId}")
+  public List<Schedule> getAllSchedulesByStudentId(@PathVariable(value = "studentId") Integer studentId){
+    return scheduleService.getAllSchedulesByStudentId(studentId);
+  }
+
+  @PostMapping("/schedule")
   public Schedule createSchedule(@Valid @RequestBody Schedule schedule) {
     scheduleService.saveSchedule(schedule);
     return schedule;
   }
 
-  @PutMapping("/schedules/{id}")
+  @PutMapping("/schedule/{id}")
   public ResponseEntity<Schedule> updateSchedule(
       @PathVariable(value = "id") Long gradeId, @Valid @RequestBody Schedule schedule)
       throws ResourceNotFoundException {

@@ -11,6 +11,8 @@ List<Schedule> getAllSchedules();
 
 Schedule getScheduleById(Long scheduleId);
 
+List<Schedule> getAllSchedulesByStudentId(Integer studentId);
+
 Schedule saveSchedule(Schedule schedule);
 
 Schedule updateSchedule(Long scheduleId, Schedule schedule);

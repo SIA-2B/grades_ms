@@ -41,6 +41,16 @@ public class GradeService implements IGradeService{
 	}
 
 	@Override
+	public List<Grade> getAllGradesByCourseName(String courseName) {
+		return gradeRepository.findByCourseName(courseName);
+	}
+
+	@Override
+	public List<Grade> getAllGradesByStudentId(Integer studentId) {
+		return gradeRepository.findByStudentId(studentId);
+	}
+
+	@Override
 	public Grade saveGrade(Grade grade) {
 		return gradeRepository.save(grade);
 	}
@@ -53,7 +63,7 @@ public class GradeService implements IGradeService{
 			grade = gradeRepository.findById(gradeId).orElseThrow(() -> new ResourceNotFoundException("Grade not found on :: " + gradeId));
 			grade.setStudentId(gradeDet.getStudentId());
 			grade.setCourseId(gradeDet.getCourseId());
-			grade.setTeacherId(gradeDet.getTeacherId());
+			grade.setCourseName(gradeDet.getCourseName());
 			grade.setGradeFinal(gradeDet.getGradeFinal());
 			grade.setGradePeriod(gradeDet.getGradePeriod());
 			updatedGrade = gradeRepository.save(grade);

@@ -5,5 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import com.devops.tutorial.model.Grade;
 
+import java.util.List;
+
 @Repository
-public interface GradeRepository extends JpaRepository<Grade, Long> {}
+public interface GradeRepository extends JpaRepository<Grade, Long> {
+    List<Grade> findByCourseName(String courseName);
+    List<Grade> findByStudentId(Integer studentId);
+}
