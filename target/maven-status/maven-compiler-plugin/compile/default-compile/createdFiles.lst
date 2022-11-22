@@ -10,5 +10,5 @@ com/devops/tutorial/exception/ResourceNotFoundException.class
 com/devops/tutorial/Application.class
 com/devops/tutorial/repository/ScheduleRepository.class
 com/devops/tutorial/model/Schedule.class
-com/devops/tutorial/controller/ScheduleController.class
 com/devops/tutorial/controller/GradeController.class
+com/devops/tutorial/controller/ScheduleController.class
